@@ -3,7 +3,7 @@ class NodoCola{
     NodoCola sig;
 
     NodoCola(){
-	
+	dato = new ColaD();
 	sig = null;
     }
 }
