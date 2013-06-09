@@ -12,6 +12,7 @@ public class Lista{
 	    if(actual == null){
 		NodoCola nuevo = new NodoCola();
 		Datos = nuevo;
+                actual = Datos;
 	    }
 	    else{
 		NodoCola nuevo = new NodoCola();
