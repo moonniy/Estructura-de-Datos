@@ -38,42 +38,4 @@ public class ColaD{
 	    actual = actual.liga;
 	}
     }
-    /*
-    public static void main(String args[]){
-	ColaD Cola = new ColaD();
-	int op, dato, datoEliminado;
-	do{
-	System.out.println("1.Insertar");
-	System.out.println("2.Eliminar");
-	System.out.println("3.Esta Vacia");
-	System.out.println("4.Mostrar Cola");
-	System.out.println("5.Salir");
-	op = Integer.parseInt(System.console().readLine());
-	
-	    switch(op){
-	    case 1:
-		System.out.println("Ingresar dato:");
-		dato = Integer.parseInt(System.console().readLine());
-		Cola.Insertar(dato);
-		break;
-	    case 2:
-		datoEliminado = Cola.Eliminar();
-		if(datoEliminado == -1){
-		    System.out.println("cola vacia!");
-		}else
-		System.out.println(datoEliminado);
-		break;
-	    case 3:
-		if(Cola.ColaDVacia() == true)
-		    System.out.println("cola vacia!");
-		else
-		    System.out.println("La cola tiene elementos!");
-		break;
-	    case 4:
-		Cola.Mostrar();
-		break;
-
-	    }
-	}while(op != 5);
-	} */   
 }
