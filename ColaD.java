@@ -34,7 +34,7 @@ public class ColaD{
     public void Mostrar(){
 	Nodo actual = Elemento;
 	while (actual != null){
-	    System.out.println(actual.info + " ");
+	    System.out.print(actual.info + " ");
 	    actual = actual.liga;
 	}
     }

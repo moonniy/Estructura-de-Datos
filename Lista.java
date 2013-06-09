@@ -3,7 +3,6 @@ public class Lista{
 
     public Lista(){
 	Datos = null;
-	ColaD Cola = new ColaD();
     }
 
     protected void CrearCola(int NumElementos){
@@ -13,6 +12,7 @@ public class Lista{
 	    if(actual == null){
 		NodoCola nuevo = new NodoCola();
 		Datos = nuevo;
+		actual = Datos;
 	    }
 	    else{
 		NodoCola nuevo = new NodoCola();
@@ -21,36 +21,44 @@ public class Lista{
 		actual.sig = nuevo;		
 	    }
 	    i++;
-	    //	    System.out.println(i);
 	}while(i < NumElementos);
+	actual = Datos;
+	i = 0;
+	while(actual != null){
+	    i++;
+	    System.out.println(i);
+	    actual = actual.sig;
+	}
     }
 
     protected void InsertarElemento(int numCola, int dato){
 	NodoCola actual = Datos;
-	ColaD Cola = new ColaD();
 	int cont = 1;
-	if(actual != null){
-	    while(cont != numCola){
-		actual = actual.sig;
-		cont++;
-	    }
-	    Cola.Insertar(dato); 
-	}
-	else
+	if(actual == null){
 	    System.out.println("Lista vacia");
-	Cola.Mostrar();
+	    return; 
+	}
+	while(actual != null && cont < numCola){
+	    actual = actual.sig;
+	    System.out.println(cont);
+	    cont++;
+	}
+	if(cont < numCola)
+	    System.out.println("Numero de cola fuera de rango");
+	else{
+	    actual.dato.Insertar(dato);
+	} 
     }
 
     protected int EliminaElemento(int numCola){
 	NodoCola actual = Datos;
-       	ColaD Cola = new ColaD();
 	int datoEliminado, cont = 1;
 	if(actual != null){
 	    while(cont != numCola){
 		actual = actual.sig;
 		cont++;
 	    }
-	    return(Cola.Eliminar());
+	    return(actual.dato.Eliminar());
 	}
 	else
 	    return -1;
@@ -58,14 +66,13 @@ public class Lista{
 
     protected void MostrarCola(int numCola){
 	NodoCola actual = Datos;
-       	ColaD Cola = new ColaD();
 	int cont = 1;
 	if(actual != null){
 	    while(cont != numCola){
 		actual = actual.sig;
 		cont++;
 	    }
-	    Cola.Mostrar();
+	    actual.dato.Mostrar();
 	}
 	else
 	    System.out.println("Cola vacia");
@@ -78,22 +85,28 @@ public class Lista{
 	numElementos = Integer.parseInt(System.console().readLine());
 	Elementos.CrearCola(numElementos);
 	do{
-	    System.out.println("1.Insertar valor");
-	    System.out.println("2.Eliminar valor");
-	    System.out.println("3.Mostrar");
-	    System.out.println("4.Salir");
+	    System.out.println("\n**********MENU********** ");
+	    System.out.println("\t1.Insertar valor");
+	    System.out.println("\t2.Eliminar valor");
+	    System.out.println("\t3.Mostrar");
+	    System.out.println("\t4.Salir");
+	    System.out.println("************************** ");
+	    System.out.print(">> ");
 	    op = Integer.parseInt(System.console().readLine());
 
 	    switch(op){
 	    case 1:
 		System.out.println("¿En que cola?");
+		System.out.print(">> ");
 		numCola = Integer.parseInt(System.console().readLine());
 		System.out.println("Ingresar dato:");
+		System.out.print(">> ");
 		dato = Integer.parseInt(System.console().readLine());
 		Elementos.InsertarElemento(numCola,dato);
 		break;
 	    case 2:
 		System.out.println("¿En que cola?");
+		System.out.print(">> ");
 		numCola = Integer.parseInt(System.console().readLine());
 		datoEliminado= Elementos.EliminaElemento(numCola);
 		if(datoEliminado != -1)
@@ -103,6 +116,7 @@ public class Lista{
 		break;
 	    case 3:
 		System.out.println("¿Que cola?");
+		System.out.print(">> ");
 		numCola = Integer.parseInt(System.console().readLine());
 		Elementos.MostrarCola(numCola);
 	    }
