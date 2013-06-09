@@ -3,7 +3,6 @@ public class Lista{
 
     public Lista(){
 	Datos = null;
-	ColaD Cola = new ColaD();
     }
 
     protected void CrearCola(int NumElementos){
@@ -26,19 +25,35 @@ public class Lista{
     }
 
     protected void InsertarElemento(int numCola, int dato){
+    	// Nodo que va a mantener referencia inicial al inicio de lista
 	NodoCola actual = Datos;
-	ColaD Cola = new ColaD();
+	
 	int cont = 1;
-	if(actual != null){
-	    while(cont != numCola){
+	
+	
+	// Se verifica si la lista esta vacia
+	if (actual == null){
+	    System.out.println("Lista vacia, cree una cola");
+	    return;    
+	}
+	
+	// Cubre el caso si la lista es menor al numero de cola 
+	// especificado.
+	while(actual != null && cont < numCola){
 		actual = actual.sig;
 		cont++;
-	    }
-	    Cola.Insertar(dato); 
 	}
-	else
-	    System.out.println("Lista vacia");
-	Cola.Mostrar();
+	 
+	// Se verifica si el limite de lista es menor al numero de lista solicitado
+	// Nota: Dado el caso de llegar al final de lista sin encontrar el elemento
+	//       deseado, el cont mantendra la longitud de la lista.
+	if (cont < numCola)   
+	    System.out.println("Numero de cola fuera de rango");
+	else {
+	    actual.dato.Insertar(dato); 
+	    actual.dato.Mostrar();	
+	}
+
     }
 
     protected int EliminaElemento(int numCola){
